@@ -7,11 +7,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.awt.*;
-
 public class CartTest {
     WebDriver driver;
     String mascaraBrown = "Тушь для ресниц High Impact Waterproof Mascara, тон black/brown, 8 мл";
-
     @BeforeAll
     static void setupClass() {
         WebDriverManager.chromedriver().setup();
