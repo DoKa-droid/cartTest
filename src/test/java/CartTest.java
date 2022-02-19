@@ -25,11 +25,11 @@ public class CartTest extends BaseTest {
         driver.findElement(By.xpath("//a[@role='button' and contains(text(), 'Войти')]")).click();
         Thread.sleep(1000);
         if (!driver.findElements(By.xpath("//input[@name='login']")).isEmpty()) {
-            driver.findElement(By.xpath("//input[@name='login']")).sendKeys("stavrosivo@nalsci.com");
+            driver.findElement(By.xpath("//input[@name='login']")).sendKeys(Constants.CREDENTIALS.EMAIL);
         } else {
-            driver.findElement(By.xpath("//input[@name='Электронная почта']")).sendKeys("stavrosivo@nalsci.com");
+            driver.findElement(By.xpath("//input[@name='Электронная почта']")).sendKeys(Constants.CREDENTIALS.EMAIL);
         }
-        driver.findElement(By.xpath("//input[@name='password']")).sendKeys("JieYah5puz7");
+        driver.findElement(By.xpath("//input[@name='password']")).sendKeys(Constants.CREDENTIALS.PASSWORD);
         Thread.sleep(1000);
         driver.findElement(By.xpath("//button[@role='button' and contains(text(), 'Войти')]")).click();
 
@@ -60,11 +60,11 @@ public class CartTest extends BaseTest {
         driver.findElement(By.xpath("//a[@role='button' and contains(text(), 'Войти')]")).click();
         Thread.sleep(1000);
         if (!driver.findElements(By.xpath("//input[@name='login']")).isEmpty()) {
-            driver.findElement(By.xpath("//input[@name='login']")).sendKeys("stavrosivo@nalsci.com");
+            driver.findElement(By.xpath("//input[@name='login']")).sendKeys(Constants.CREDENTIALS.EMAIL);
         } else {
-            driver.findElement(By.xpath("//input[@name='Электронная почта']")).sendKeys("stavrosivo@nalsci.com");
+            driver.findElement(By.xpath("//input[@name='Электронная почта']")).sendKeys(Constants.CREDENTIALS.EMAIL);
         }
-        driver.findElement(By.xpath("//input[@name='password']")).sendKeys("JieYah5puz7");
+        driver.findElement(By.xpath("//input[@name='password']")).sendKeys(Constants.CREDENTIALS.PASSWORD);
         Thread.sleep(1000);
         driver.findElement(By.xpath("//button[@role='button' and contains(text(), 'Войти')]")).click();
 
@@ -82,7 +82,7 @@ public class CartTest extends BaseTest {
         driver.findElement(By.xpath("//button[@type='button' and @aria-label='Убрать из корзины']")).click();
         Thread.sleep(3000);
 
-        Assertions.assertFalse(driver.findElement(By.xpath("//div[@id='cart']//div[contains(text(), 'Тушь для ресниц')]")).isDisplayed());
+        Assertions.assertFalse(driver.findElements(By.xpath("//div[@id='cart']//div[contains(text(), 'Тушь для ресниц')]")).size()>0);
     }
 
     @Test
@@ -92,11 +92,12 @@ public class CartTest extends BaseTest {
         driver.findElement(By.xpath("//a[@role='button' and contains(text(), 'Войти')]")).click();
         Thread.sleep(1000);
         if (!driver.findElements(By.xpath("//input[@name='login']")).isEmpty()) {
-            driver.findElement(By.xpath("//input[@name='login']")).sendKeys("stavrosivo@nalsci.com");
+            driver.findElement(By.xpath("//input[@name='login']")).sendKeys(Constants.CREDENTIALS.EMAIL);
         } else {
-            driver.findElement(By.xpath("//input[@name='Электронная почта']")).sendKeys("stavrosivo@nalsci.com");
+            driver.findElement(By.xpath("//input[@name='Электронная почта']")).sendKeys(Constants.CREDENTIALS.EMAIL);
         }
-        driver.findElement(By.xpath("//input[@name='password']")).sendKeys("JieYah5puz7");
+        driver.findElement(By.xpath("//input[@name='password']")).sendKeys(Constants.CREDENTIALS.PASSWORD);
+        Thread.sleep(1000);
         driver.findElement(By.xpath("//button[@role='button' and contains(text(), 'Войти')]")).click();
 
         Thread.sleep(4000);
@@ -108,13 +109,12 @@ public class CartTest extends BaseTest {
         WebElement element = driver.findElement(By.xpath("//h2[contains(text(), 'тушь')]"));
         js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView();", element);
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         driver.findElement(By.xpath("//span[contains(text(), 'Тушь')]")).click();
 
         Thread.sleep(4000);
         calculatedSum = driver.findElement(By.xpath("//span[@aria-label='Итоговая цена']")).getText();
         calculatedSum = calculatedSum.replace("\r\n", "");
-        calculatedSum = calculatedSum.substring(6);
         calculatedSum = calculatedSum.replace(" ", "");
         totalPrice += Integer.valueOf(calculatedSum.substring(0, 3));
 
@@ -126,7 +126,6 @@ public class CartTest extends BaseTest {
 
         calculatedSum = driver.findElement(By.xpath("//span[@aria-label='Итоговая цена']")).getText();
         calculatedSum = calculatedSum.replace("\r\n", "");
-        calculatedSum = calculatedSum.substring(6);
         calculatedSum = calculatedSum.replace(" ", "");
         totalPrice += Integer.valueOf(calculatedSum.substring(0, 3));
 
@@ -144,7 +143,7 @@ public class CartTest extends BaseTest {
         calculatedSum = driver.findElement(By.xpath("//p[contains(text(), 'Итого')]")).getText();
         calculatedSum = calculatedSum.replace("\r\n", "");
         calculatedSum = calculatedSum.replace(" ", "");
-        Assertions.assertEquals(totalPrice, Integer.valueOf(calculatedSum.substring(25, 28)));
+        Assertions.assertEquals(totalPrice, Integer.valueOf(calculatedSum.substring(20, 23)));
     }
 
     @Test
@@ -153,11 +152,11 @@ public class CartTest extends BaseTest {
         driver.findElement(By.xpath("//a[@role='button' and contains(text(), 'Войти')]")).click();
         Thread.sleep(1000);
         if (!driver.findElements(By.xpath("//input[@name='login']")).isEmpty()) {
-            driver.findElement(By.xpath("//input[@name='login']")).sendKeys("stavrosivo@nalsci.com");
+            driver.findElement(By.xpath("//input[@name='login']")).sendKeys(Constants.CREDENTIALS.EMAIL);
         } else {
-            driver.findElement(By.xpath("//input[@name='Электронная почта']")).sendKeys("stavrosivo@nalsci.com");
+            driver.findElement(By.xpath("//input[@name='Электронная почта']")).sendKeys(Constants.CREDENTIALS.EMAIL);
         }
-        driver.findElement(By.xpath("//input[@name='password']")).sendKeys("JieYah5puz7");
+        driver.findElement(By.xpath("//input[@name='password']")).sendKeys(Constants.CREDENTIALS.PASSWORD);
         driver.findElement(By.xpath("//button[@role='button' and contains(text(), 'Войти')]")).click();
 
         Thread.sleep(5000);
@@ -178,11 +177,11 @@ public class CartTest extends BaseTest {
         driver.findElement(By.xpath("//a[@role='button' and contains(text(), 'Войти')]")).click();
         Thread.sleep(1000);
         if (!driver.findElements(By.xpath("//input[@name='login']")).isEmpty()) {
-            driver.findElement(By.xpath("//input[@name='login']")).sendKeys("stavrosivo@nalsci.com");
+            driver.findElement(By.xpath("//input[@name='login']")).sendKeys(Constants.CREDENTIALS.EMAIL);
         } else {
-            driver.findElement(By.xpath("//input[@name='Электронная почта']")).sendKeys("stavrosivo@nalsci.com");
+            driver.findElement(By.xpath("//input[@name='Электронная почта']")).sendKeys(Constants.CREDENTIALS.EMAIL);
         }
-        driver.findElement(By.xpath("//input[@name='password']")).sendKeys("JieYah5puz7");
+        driver.findElement(By.xpath("//input[@name='password']")).sendKeys(Constants.CREDENTIALS.PASSWORD);
         driver.findElement(By.xpath("//button[@role='button' and contains(text(), 'Войти')]")).click();
         Thread.sleep(5000);
 
@@ -208,11 +207,11 @@ public class CartTest extends BaseTest {
         driver.findElement(By.xpath("//a[@role='button' and contains(text(), 'Войти')]")).click();
         Thread.sleep(1000);
         if (!driver.findElements(By.xpath("//input[@name='login']")).isEmpty()) {
-            driver.findElement(By.xpath("//input[@name='login']")).sendKeys("stavrosivo@nalsci.com");
+            driver.findElement(By.xpath("//input[@name='login']")).sendKeys(Constants.CREDENTIALS.EMAIL);
         } else {
-            driver.findElement(By.xpath("//input[@name='Электронная почта']")).sendKeys("stavrosivo@nalsci.com");
+            driver.findElement(By.xpath("//input[@name='Электронная почта']")).sendKeys(Constants.CREDENTIALS.EMAIL);
         }
-        driver.findElement(By.xpath("//input[@name='password']")).sendKeys("JieYah5puz7");
+        driver.findElement(By.xpath("//input[@name='password']")).sendKeys(Constants.CREDENTIALS.PASSWORD);
         driver.findElement(By.xpath("//button[@role='button' and contains(text(), 'Войти')]")).click();
         Thread.sleep(5000);
 
