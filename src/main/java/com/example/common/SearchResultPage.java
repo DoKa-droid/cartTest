@@ -12,7 +12,7 @@ public class SearchResultPage {
         this.driver = driver;
     }
 
-    By searchTitle;// = By.xpath("//h2[contains(text(), 'nike air force')]");
+    By searchTitle;
     By productDescription = By.xpath("//span[contains(text(), 'Кеды')]");
     By nothingFound = By.xpath("//div[contains(text(), 'По вашему запросу ничего не найдено')]");
     By cross = By.xpath(("//div[@class='sub-popup-feb18__close']"));
