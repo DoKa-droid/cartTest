@@ -10,16 +10,18 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class BaseTest {
     WebDriver driver;
     JavascriptExecutor js;
+
     @BeforeAll
     static void setupClass() {
         WebDriverManager.chromedriver().setup();
     }
 
     @BeforeEach
-    void setupTest() {
+    void setupTest() throws InterruptedException {
         driver = new ChromeDriver();
         driver.get(Constants.URL.BASE_URL);
         driver.manage().window().maximize();
+        Thread.sleep(2000);
     }
 
     @AfterEach
